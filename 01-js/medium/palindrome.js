@@ -4,7 +4,17 @@
 */
 
 function isPalindrome(str) {
+  let n=str.length;
+  for(let i=0, j=n-1;i<j;i++, j--){
+    if(str[i].toLowerCase()<'a' || str[i].toLowerCase()>'z')
+      continue;
+    if(str[j].toLowerCase()<'a' || str[j].toLowerCase()>'z')
+      continue;
+    else if(str[i].toLowerCase() != str[j].toLowerCase()){
+      return false;
+    }
+  }
   return true;
 }
-
+// console.log(isPalindrome("Nan"));
 module.exports = isPalindrome;

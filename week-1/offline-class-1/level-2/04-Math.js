@@ -11,12 +11,12 @@ function mathMethods(value) {
   console.log("After floor():", flooring);
 
   let randomValue = Math.random();
-  console.log("After random():", randomValue);
+  console.log("After random():", Math.ceil(100*randomValue));
 
-  let maxValue = Math.max(5, 10, 15);
+  let maxValue = Math.max(5, 10, 15, 20);
   console.log("After max():", maxValue);
 
-  let minValue = Math.min(5, 10, 15);
+  let minValue = Math.min(5, 10, 15, -5);
   console.log("After min():", minValue);
 
   let powerOfTwo = Math.pow(value, 2);
