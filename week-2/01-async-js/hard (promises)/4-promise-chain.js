@@ -32,24 +32,51 @@ function wait1(t) {
     });
   }
   
-  function calculateTime(t1, t2, t3) {
+  // function calculateTime(t1, t2, t3) {
+  //   const start = Date.now();
+  
+  //   // Sequentially call the functions using promise chaining
+  //   return wait1(t1)
+  //   .then((result1)=>{
+  //       console.log(result1);
+  //       return wait2(t2);
+  //   })
+  //   .then((result2)=>{
+  //       console.log(result2);
+  //       return wait3(t3);
+  //   })
+  //   .then((result3)=>{
+  //       console.log(result3);
+  //       const end=Date.now();
+  //       return end-start;
+  //   });
+
+  // }
+
+
+  // using async await syntax:
+  async function calculateTime(t1, t2, t3) {
     const start = Date.now();
   
-    // Sequentially call the functions using promise chaining
-    return wait1(t1)
-    .then((result1)=>{
-        console.log(result1);
-        return wait2(t2);
-    })
-    .then((result2)=>{
-        console.log(result2);
-        return wait3(t3);
-    })
-    .then((result3)=>{
-        console.log(result3);
-        const end=Date.now();
-        return end-start;
-    });
-
+    try {
+      // Sequentially call the functions using async/await
+      const result1 = await wait1(t1);
+      console.log(result1);
+  
+      const result2 = await wait2(t2);
+      console.log(result2);
+  
+      const result3 = await wait3(t3);
+      console.log(result3);
+  
+      const end = Date.now();
+      return end - start;
+    } catch (error) {
+      console.error(error);
+      throw error; // Re-throw the error to propagate it further if needed
+    }
   }
-module.exports = calculateTime;
+
+
+calculateTime(2,4,6);
+// module.exports = calculateTime;

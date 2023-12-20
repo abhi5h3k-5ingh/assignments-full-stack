@@ -30,16 +30,20 @@ function wait1(t) {
     });
   }
   
-  function calculateTime(t1, t2, t3) {
+  async function calculateTime(t1, t2, t3) {
     const start = Date.now();
   
     // Use Promise.all to wait for all promises to resolve
-    return Promise.all([wait1(t1), wait2(t2), wait3(t3)])
-      .then(() => {
-        const end = Date.now();
-        return end - start;
-      });
-  }
+    // return Promise.all([wait1(t1), wait2(t2), wait3(t3)])
+    //   .then(() => {
+    //     const end = Date.now();
+    //     return end - start;
+    //   });
 
+    await Promise.all([wait1(t1), wait2(t2), wait3(t3)]);
+    const end = Date.now();
+    return end - start;
+  }
+calculateTime(2,3,4);
 
 module.exports = calculateTime;
